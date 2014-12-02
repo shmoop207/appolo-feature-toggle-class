@@ -15,8 +15,8 @@ describe("unit", function () {
         featureToggleClass._overrides = [];
 
         featureToggleManager = {
-            isActive:function(){
-                return true;
+            isActive:function(name){
+                return name == "aaa";
             }
         }
 
@@ -333,6 +333,43 @@ describe("unit", function () {
         var rectangleOverride = new TEST.Rectangle(2,2);
 
         rectangleOverride.area().should.be.eq(8)
+    });
+
+
+    it("should not override if feature toggle closed",function(){
+
+
+        var Rectangle = Class.define({
+            $config:{
+                namespace:'TEST.Rectangle'
+            },
+
+            constructor: function (width, height) {
+                this.height = height;
+                this.width = width;
+                this._area = 0;
+            },
+
+            area: function () {
+
+                return  this.width * this.height;
+            }
+        });
+
+
+        featureToggleClass.define(Rectangle,'closed',{
+            area:featureToggleClass.wrap(function(origin){
+                var result = origin();
+
+                return result *2;
+            })
+        });
+
+        featureToggleHandler(featureToggleManager,Class);
+
+        var rectangleOverride = new TEST.Rectangle(2,2);
+
+        rectangleOverride.area().should.be.eq(4)
     });
 
 

@@ -1,0 +1,36 @@
+{
+  "name": "appolo-feature-toggle-class",
+  "description": "appolo feature toggle module",
+  "keywords": [
+    "appolo",
+    "appolo-express",
+    "feature",
+    "toggle",
+    "feature-toggle"
+  ],
+  "author": {
+    "name": "Roman Svichar",
+    "email": "shmoop207@gmail.com"
+  },
+  "main": "./index.js",
+  "version": "0.0.9",
+  "license": "Mit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shmoop207/appolo-feature-toggle-class"
+  },
+  "readme": "",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "appolo-class": "shmoop207/appolo-class",
+    "appolo-inject": "shmoop207/appolo-inject",
+    "lodash": "2.4.1",
+    "q": "^1.0.1",
+    "request": "^2.40.0"
+  },
+  "devDependencies": {
+    "chai": "1.8.1",
+    "grunt": "*",
+    "grunt-mocha-test": "0.8.1"
+  }
+}

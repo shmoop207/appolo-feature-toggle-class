@@ -1,6 +1,6 @@
 var _ = require('lodash'),
     featureToggleClass = require('./lib/featureToggleClass'),
-    featureToggleHandler = require('../../lib/featureToggleHandler');
+    featureToggleHandler = require('./lib/featureToggleHandler');
 
 module.exports.module = function (options) {
 

@@ -2,23 +2,26 @@ var chai = require('chai'),
     Class = require('appolo-class'),
     _ = require('lodash'),
     should = require('chai').should(),
-    featureToggleClass = require('../../lib/featureToggleClass'),
-    featureToggleHandler = require('../../lib/featureToggleHandler');
+    FeatureToggleClass = require('../../lib/featureToggleClass'),
+    FeatureToggleHandler = require('../../lib/featureToggleHandler');
 
 
 describe("unit", function () {
-    var featureToggleManager;
+    var featureToggleManager,featureToggleHandler,featureToggleClass;
 
     beforeEach(function () {
 
         TEST = {};
-        featureToggleClass._overrides = [];
 
         featureToggleManager = {
             isActive:function(name){
                 return name == "aaa";
             }
-        }
+        };
+
+        featureToggleHandler  = new FeatureToggleHandler(Class,featureToggleManager);
+
+        featureToggleClass  = new FeatureToggleClass(featureToggleHandler);
 
 
     });
@@ -46,7 +49,7 @@ describe("unit", function () {
             }
         });
 
-        featureToggleHandler(featureToggleManager,Class);
+
 
         var rectangleOverride = new Rectangle();
 
@@ -79,7 +82,6 @@ describe("unit", function () {
             }
         });
 
-        featureToggleHandler(featureToggleManager,Class);
 
         var rectangleOverride = new TEST.Rectangle();
 
@@ -105,7 +107,6 @@ describe("unit", function () {
 
         });
 
-        featureToggleHandler(featureToggleManager,Class);
 
         var rectangleOverride = new TEST.Rectangle();
 
@@ -140,7 +141,6 @@ describe("unit", function () {
             }
         });
 
-        featureToggleHandler(featureToggleManager,Class);
 
         var rectangleOverride = new TEST.Rectangle();
 
@@ -182,7 +182,6 @@ describe("unit", function () {
             }
         });
 
-        featureToggleHandler(featureToggleManager,Class);
 
         var rectangleOverride = new TEST.Rectangle();
 
@@ -222,7 +221,6 @@ describe("unit", function () {
             }
         });
 
-        featureToggleHandler(featureToggleManager,Class);
 
         var rectangleOverride = new TEST.Rectangle();
 
@@ -256,7 +254,6 @@ describe("unit", function () {
             })
         });
 
-        featureToggleHandler(featureToggleManager,Class);
 
         var rectangleOverride = new TEST.Rectangle(2,2);
 
@@ -291,7 +288,6 @@ describe("unit", function () {
             })
         });
 
-        featureToggleHandler(featureToggleManager,Class);
 
         var rectangleOverride = new TEST.Rectangle(2,2);
 
@@ -328,7 +324,7 @@ describe("unit", function () {
             })
         });
 
-        featureToggleHandler(featureToggleManager,Class);
+
 
         var rectangleOverride = new TEST.Rectangle(2,2);
 
@@ -365,7 +361,6 @@ describe("unit", function () {
             })
         });
 
-        featureToggleHandler(featureToggleManager,Class);
 
         var rectangleOverride = new TEST.Rectangle(2,2);
 

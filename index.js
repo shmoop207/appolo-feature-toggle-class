@@ -1,16 +1,18 @@
 var _ = require('lodash'),
-    featureToggleClass = require('./lib/featureToggleClass'),
-    featureToggleHandler = require('./lib/featureToggleHandler');
+    FeatureToggleClass = require('./lib/featureToggleClass'),
+    FeatureToggleHandler = require('./lib/featureToggleHandler');
 
 module.exports.module = function (options) {
 
     return function (env, logger,featureToggleManager, inject,appolo, callback) {
 
-        featureToggleHandler(featureToggleManager,appolo.Class)
+        var featureToggleHandler  = new FeatureToggleHandler(appolo.Class,featureToggleManager);
+
+        var featureToggleClass  = new FeatureToggleClass(featureToggleHandler);
 
         callback();
     }
 
 }
 
-module.exports.featureToggleClass = featureToggleClass
+module.exports.featureToggleClass = featureToggleClass;
